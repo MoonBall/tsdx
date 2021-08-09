@@ -113,11 +113,8 @@ export async function createRollupConfig(
         },
       },
       resolve({
-        mainFields: [
-          'module',
-          'main',
-          opts.target !== 'node' ? 'browser' : undefined,
-        ].filter(Boolean) as string[],
+        browser: opts.target !== 'node',
+        mainFields: ['module', 'main'].filter(Boolean) as string[],
         extensions: [...RESOLVE_DEFAULTS.extensions, '.jsx'],
       }),
       // all bundled external modules need to be converted from CJS to ESM
